@@ -1,4 +1,5 @@
 import BinaryToDecimal from './components/BinaryToDecimal'
+import './App.css'
 
 function App() {
 
