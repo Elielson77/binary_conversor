@@ -1,12 +1,12 @@
-import { useState } from 'react'
+import BinaryToDecimal from './components/BinaryToDecimal'
 
 function App() {
 
   return (
     <div className="App">
-      <h1>projeto
-        
-      </h1>
+      <h1>Conversor Binário para Decimal</h1>
+
+      <BinaryToDecimal />
     </div>
   )
 }
