@@ -2,8 +2,12 @@ import ConvertComponent from './components/ConvertComponent'
 import './App.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Select, MenuItem, InputLabel } from '@mui/material';
+import { useState } from 'react';
 
 function App() {
+
+  const [typeConverse, setTypeConverse] = useState();
 
   const binaryToDecimal = (binary) => {
     if (!binary) {
@@ -27,7 +31,7 @@ function App() {
 
   const decimalToBinary = (decimal) => {
 
-    if(!decimal){
+    if (!decimal) {
       toast.info("O campo não pode estar vazio!", { autoClose: 3000 })
       return
     }
@@ -47,7 +51,19 @@ function App() {
   return (
     <div className="App">
       <ToastContainer />
-      <h1>Conversor Binário para Decimal</h1>
+
+
+
+      <h1>Conversor</h1>
+
+      <label style={{display: 'flex', flexDirection: 'column', width: '150px', margin: '0 auto'}}>
+        Escolha o tipo de Conversão
+        <select onChange={e => setTypeConverse(e.target.value)}>
+          <option value=""></option>
+          <option value="binary-to-decimal">Binário / Decimal</option>
+          <option value="decimal-to-binary">Decimal / Binário</option>
+        </select>
+      </label>
 
       <ConvertComponent
         label="Digite aqui o número binário"
@@ -59,7 +75,7 @@ function App() {
         label="Digite aqui o número decimal"
         convertFunction={decimalToBinary}
       />
-
+      {typeConverse}
     </div>
   )
 }
