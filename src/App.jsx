@@ -1,6 +1,6 @@
 import BinaryToDecimal from './components/BinaryToDecimal'
 import './App.css'
-import { ToastContainer, toast} from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
@@ -21,7 +21,26 @@ function App() {
       }
       decimalNumber += binaryDigit * (2 ** i);
     }
-    return(decimalNumber)
+    return (decimalNumber)
+  }
+
+
+  const decimalToBinary = (decimal) => {
+
+    if(!decimal){
+      toast.info("O campo não pode estar vazio!")
+      return
+    }
+
+    let number = decimal;
+    const numberBinary = [];
+
+    while (number >= 1) {
+      numberBinary.push(number % 2)
+      number = Math.floor(number / 2);
+    }
+
+    return Number(numberBinary.reverse().join(''))
   }
 
 
@@ -34,6 +53,13 @@ function App() {
         label="Digite aqui o número binário"
         binaryToDecimal={binaryToDecimal}
       />
+
+      <h1>Conversor Decimal para Binário</h1>
+      <BinaryToDecimal
+        label="Digite aqui o número decimal"
+        binaryToDecimal={decimalToBinary}
+      />
+
     </div>
   )
 }
