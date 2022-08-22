@@ -8,6 +8,9 @@ const BinaryToDecimal = () => {
   const [decimalNumber, setDecimalNumber] = useState();
 
   const binaryToDecimal = (binary) => {
+
+    if(!binary) toast("O campo não pode estar vazio!", {autoClose: 3000, icon: false}) 
+
     const arrayOfBinary = binary.toString().split('').reverse()
     let decimalNumber = 0;
 
@@ -15,7 +18,7 @@ const BinaryToDecimal = () => {
       const binaryDigit = Number(arrayOfBinary[i])
       if (binaryDigit !== 0 && binaryDigit !== 1) {
         setDecimalNumber()
-        toast.error("Insira apenas 0 ou 1!", {autoClose: 3000, icon: false}) 
+        toast("Insira apenas 0 ou 1!", {autoClose: 3000, icon: false}) 
         return
       }
       decimalNumber += binaryDigit * (2 ** i);
