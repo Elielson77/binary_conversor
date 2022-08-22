@@ -32,6 +32,8 @@ label{
 input{
   font-size: 1.5em;
   width: 160px;
+  height: 25px;
+  margin-bottom: 9px;
 }
 
 .resultado{
