@@ -11,7 +11,7 @@ const BinaryToDecimal = () => {
   const binaryToDecimal = (binary) => {
 
     if (!binary) {
-      toast("O campo não pode estar vazio!", { autoClose: 3000, icon: false })
+      toast.info("O campo não pode estar vazio!", { autoClose: 3000, icon: false })
       setDecimalNumber()
       return
     }
@@ -23,7 +23,7 @@ const BinaryToDecimal = () => {
       const binaryDigit = Number(arrayOfBinary[i])
       if (binaryDigit !== 0 && binaryDigit !== 1) {
         setDecimalNumber()
-        toast("Insira apenas 0 ou 1!", { autoClose: 3000, icon: false })
+        toast.info("Insira apenas 0 e/ou 1!", { autoClose: 3000, icon: false })
         return
       }
       decimalNumber += binaryDigit * (2 ** i);
