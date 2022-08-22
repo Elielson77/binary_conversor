@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
+
 
 const BinaryToDecimal = () => {
 
@@ -12,12 +14,14 @@ const BinaryToDecimal = () => {
     for (let i = 0; i < arrayOfBinary.length; i++) {
       const binaryDigit = Number(arrayOfBinary[i])
       if (binaryDigit !== 0 && binaryDigit !== 1) {
-        console.log(binaryDigit)
-        return "Insira apenas 0 ou 1!"
+        setDecimalNumber()
+        toast.error("Insira apenas 0 ou 1!", {autoClose: 3000, icon: false}) 
+        return
       }
       decimalNumber += binaryDigit * (2 ** i);
     }
     setDecimalNumber(decimalNumber);
+    return
   }
 
 
