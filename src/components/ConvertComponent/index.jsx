@@ -4,7 +4,7 @@ import './style.css'
 
 
 
-const BinaryToDecimal = ({ label, binaryToDecimal }) => {
+const BinaryToDecimal = ({ label, convertFunction }) => {
 
   const [toConvert, setToConvert] = useState();
   const [result, setResult] = useState();
@@ -20,7 +20,7 @@ const BinaryToDecimal = ({ label, binaryToDecimal }) => {
         <KeyboardDoubleArrowRightOutlined sx={{ml: 2}}/>
         <div className="resultado">{result}</div>
       </div>
-      <button onClick={() => setResult(binaryToDecimal(toConvert))}>Converter</button>
+      <button onClick={() => setResult(convertFunction(toConvert))}>Converter</button>
     </div>
 
   )

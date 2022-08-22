@@ -1,4 +1,4 @@
-import BinaryToDecimal from './components/BinaryToDecimal'
+import ConvertComponent from './components/ConvertComponent'
 import './App.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -49,15 +49,15 @@ function App() {
       <ToastContainer />
       <h1>Conversor Binário para Decimal</h1>
 
-      <BinaryToDecimal
+      <ConvertComponent
         label="Digite aqui o número binário"
-        binaryToDecimal={binaryToDecimal}
+        convertFunction={binaryToDecimal}
       />
 
       <h1>Conversor Decimal para Binário</h1>
-      <BinaryToDecimal
+      <ConvertComponent
         label="Digite aqui o número decimal"
-        binaryToDecimal={decimalToBinary}
+        convertFunction={decimalToBinary}
       />
 
     </div>
