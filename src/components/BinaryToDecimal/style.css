@@ -14,6 +14,7 @@
 .input{
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 button{
@@ -30,6 +31,7 @@ label{
 
 input{
   font-size: 1.5em;
+  width: 160px;
 }
 
 .resultado{
