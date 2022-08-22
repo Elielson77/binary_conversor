@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './style.css'
 import { toast } from "react-toastify";
 
 
@@ -33,16 +34,16 @@ const BinaryToDecimal = () => {
 
 
   return (
-    <>
-      <div className="input-container">
-        <label>
+    <div className="input-container">
+      <div className="input">
+        <label style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
           Digite aqui o número binário:
           <input type="number" onChange={e => setBinaryNumber(e.target.value)} />
         </label>
         <div className="resultado">{decimalNumber}</div>
       </div>
       <button onClick={() => binaryToDecimal(binaryNumber)}>Converter</button>
-    </>
+    </div>
 
   )
 }
