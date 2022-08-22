@@ -9,7 +9,11 @@ const BinaryToDecimal = () => {
 
   const binaryToDecimal = (binary) => {
 
-    if(!binary) toast("O campo não pode estar vazio!", {autoClose: 3000, icon: false}) 
+    if (!binary) {
+      toast("O campo não pode estar vazio!", { autoClose: 3000, icon: false })
+      setDecimalNumber()
+      return
+    }
 
     const arrayOfBinary = binary.toString().split('').reverse()
     let decimalNumber = 0;
@@ -18,7 +22,7 @@ const BinaryToDecimal = () => {
       const binaryDigit = Number(arrayOfBinary[i])
       if (binaryDigit !== 0 && binaryDigit !== 1) {
         setDecimalNumber()
-        toast("Insira apenas 0 ou 1!", {autoClose: 3000, icon: false}) 
+        toast("Insira apenas 0 ou 1!", { autoClose: 3000, icon: false })
         return
       }
       decimalNumber += binaryDigit * (2 ** i);
@@ -33,7 +37,7 @@ const BinaryToDecimal = () => {
       <div className="input-container">
         <label>
           Digite aqui o número binário:
-          <input type="number" onChange={e => setBinaryNumber(e.target.value)}/>
+          <input type="number" onChange={e => setBinaryNumber(e.target.value)} />
         </label>
         <div className="resultado">{decimalNumber}</div>
       </div>
