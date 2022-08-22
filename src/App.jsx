@@ -7,7 +7,7 @@ function App() {
 
   const binaryToDecimal = (binary) => {
     if (!binary) {
-      toast.info("O campo não pode estar vazio!", { autoClose: 3000, icon: false })
+      toast.info("O campo não pode estar vazio!", { autoClose: 3000 })
       return
     }
     const arrayOfBinary = binary.toString().split('').reverse()
@@ -16,7 +16,7 @@ function App() {
     for (let i = 0; i < arrayOfBinary.length; i++) {
       const binaryDigit = Number(arrayOfBinary[i])
       if (binaryDigit !== 0 && binaryDigit !== 1) {
-        toast.info("Insira apenas 0 e/ou 1!", { autoClose: 3000, icon: false })
+        toast.info("Insira apenas 0 e/ou 1!", { autoClose: 3000 })
         return
       }
       decimalNumber += binaryDigit * (2 ** i);
@@ -28,7 +28,7 @@ function App() {
   const decimalToBinary = (decimal) => {
 
     if(!decimal){
-      toast.info("O campo não pode estar vazio!")
+      toast.info("O campo não pode estar vazio!", { autoClose: 3000 })
       return
     }
 
