@@ -2,12 +2,12 @@ import ConvertComponent from './components/ConvertComponent'
 import './App.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Select, MenuItem, InputLabel } from '@mui/material';
+import { Select, MenuItem, InputLabel, FormControl } from '@mui/material';
 import { useState } from 'react';
 
 function App() {
 
-  const [typeConverse, setTypeConverse] = useState();
+  const [typeConverse, setTypeConverse] = useState('default');
 
   const binaryToDecimal = (binary) => {
     if (!binary) {
@@ -50,32 +50,31 @@ function App() {
 
   return (
     <div className="App">
+
       <ToastContainer />
-
-
 
       <h1>Conversor</h1>
 
-      <label style={{display: 'flex', flexDirection: 'column', width: '150px', margin: '0 auto'}}>
-        Escolha o tipo de Conversão
-        <select onChange={e => setTypeConverse(e.target.value)}>
-          <option value=""></option>
-          <option value="binary-to-decimal">Binário / Decimal</option>
-          <option value="decimal-to-binary">Decimal / Binário</option>
-        </select>
-      </label>
+      <FormControl sx={{ width: '200px'}}>
+        <InputLabel id='type-conversion'>Tipo de Conversão</InputLabel>
+
+        <Select label="Tipo de conversão" onChange={e => setTypeConverse(e.target.value)} labelId='type-conversion' value={typeConverse}>
+          <MenuItem value="binary-to-decimal"> Binário / Decimal</MenuItem>
+          <MenuItem value="decimal-to-binary"> Decimal / Binário</MenuItem>
+        </Select>
+
+      </FormControl>
 
       <ConvertComponent
-        label="Digite aqui o número binário"
-        convertFunction={binaryToDecimal}
+        convertFunction={typeConverse === 'default' ?
+          '' :
+          typeConverse === 'binary-to-decimal' ?
+            binaryToDecimal :
+            typeConverse === 'decimal-to-binary' ?
+              decimalToBinary :
+              ''}
+        label={'Digite aqui o número'}
       />
-
-      <h1>Conversor Decimal para Binário</h1>
-      <ConvertComponent
-        label="Digite aqui o número decimal"
-        convertFunction={decimalToBinary}
-      />
-      {typeConverse}
     </div>
   )
 }
