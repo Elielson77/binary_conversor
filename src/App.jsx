@@ -2,8 +2,17 @@ import ConvertComponent from './components/ConvertComponent'
 import './App.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Select, MenuItem, InputLabel, FormControl } from '@mui/material';
+import { Select, MenuItem, InputLabel, FormControl, Box } from '@mui/material';
 import { useState } from 'react';
+
+
+const containerStyle = {
+  display: 'flex', 
+  flexDirection: 'column', 
+  maxWidth: '500px', 
+  margin: '30px auto'
+}
+
 
 function App() {
 
@@ -55,26 +64,31 @@ function App() {
 
       <h1>Conversor</h1>
 
-      <FormControl sx={{ width: '200px'}}>
-        <InputLabel id='type-conversion'>Tipo de Conversão</InputLabel>
+      <Box sx={containerStyle}>
+        <FormControl sx={{ width: '200px', mt: '30px' }}>
+          <InputLabel id='type-conversion'>Tipo de Conversão</InputLabel>
 
-        <Select label="Tipo de conversão" onChange={e => setTypeConverse(e.target.value)} labelId='type-conversion' value={typeConverse}>
-          <MenuItem value="binary-to-decimal"> Binário / Decimal</MenuItem>
-          <MenuItem value="decimal-to-binary"> Decimal / Binário</MenuItem>
-        </Select>
+          <Select label="Tipo de conversão" onChange={e => setTypeConverse(e.target.value)} labelId='type-conversion' value={typeConverse}
+          sx={{backgroundColor: '#f3f3f3'}}>
+            <MenuItem value="binary-to-decimal"> Binário / Decimal</MenuItem>
+            <MenuItem value="decimal-to-binary"> Decimal / Binário</MenuItem>
+          </Select>
 
-      </FormControl>
+        </FormControl>
 
-      <ConvertComponent
-        convertFunction={typeConverse === 'default' ?
-          '' :
-          typeConverse === 'binary-to-decimal' ?
-            binaryToDecimal :
-            typeConverse === 'decimal-to-binary' ?
-              decimalToBinary :
-              ''}
-        label={'Digite aqui o número'}
-      />
+        <ConvertComponent
+          convertFunction={typeConverse === 'default' ?
+            '' :
+            typeConverse === 'binary-to-decimal' ?
+              binaryToDecimal :
+              typeConverse === 'decimal-to-binary' ?
+                decimalToBinary :
+                ''}
+          label={'Digite aqui o número'}
+        />
+      </Box>
+
+
     </div>
   )
 }
