@@ -20,6 +20,7 @@ function App() {
 
   const binaryToDecimal = (binary) => {
     if (!binary) {
+      window.navigator.vibrate(500)
       toast.info("O campo não pode estar vazio!", { autoClose: 3000 })
       return
     }
@@ -29,6 +30,7 @@ function App() {
     for (let i = 0; i < arrayOfBinary.length; i++) {
       const binaryDigit = Number(arrayOfBinary[i])
       if (binaryDigit !== 0 && binaryDigit !== 1) {
+        window.navigator.vibrate(500)
         toast.info("Insira apenas 0 e/ou 1!", { autoClose: 3000 })
         return
       }
@@ -41,6 +43,7 @@ function App() {
   const decimalToBinary = (decimal) => {
 
     if (!decimal) {
+      window.navigator.vibrate(500)
       toast.info("O campo não pode estar vazio!", { autoClose: 3000 })
       return
     }
