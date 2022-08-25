@@ -11,10 +11,16 @@ const BinaryToDecimal = ({ label, convertFunction }) => {
   const [result, setResult] = useState();
 
   const executeConversion = () => {
-    if(!convertFunction){
+    try {
+      window.navigator.vibrate(2000)
+    } catch (e) {
+     console.log(e)
+    }
+
+    if (!convertFunction) {
       toast.info("Escolha um modo de conversão!")
       return
-    }  
+    }
 
     setResult(convertFunction(toConvert))
   }
@@ -26,7 +32,7 @@ const BinaryToDecimal = ({ label, convertFunction }) => {
           {label}:
           <input type="number" onChange={e => setToConvert(e.target.value)} />
         </label>
-        <KeyboardDoubleArrowRightOutlined sx={{ml: 2}}/>
+        <KeyboardDoubleArrowRightOutlined sx={{ ml: 2 }} />
         <div className="resultado">{result}</div>
       </div>
       <button onClick={() => executeConversion()}>Converter</button>
