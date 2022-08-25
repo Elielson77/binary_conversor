@@ -11,12 +11,7 @@ const BinaryToDecimal = ({ label, convertFunction }) => {
   const [result, setResult] = useState();
 
   const executeConversion = () => {
-    try {
       window.navigator.vibrate(2000)
-    } catch (e) {
-     console.log(e)
-    }
-
     if (!convertFunction) {
       toast.info("Escolha um modo de conversão!")
       return
